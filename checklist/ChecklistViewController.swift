@@ -9,10 +9,8 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
-    
-    
-    
     var items = [ChecklistItem]()
+    var checklist: Checklist!
     
     var row0checked = false
     var row1checked = false
@@ -30,6 +28,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
 //        print("Data file path is \(dataFilePath())")
         // Load items
         loadChecklistItems()
+        title = checklist.name
     }
 
     //MARK:- Table View Data Source
@@ -85,7 +84,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         saveChecklistItems()
     }
     
-    //MARK:- Add Item ViewController Delegates
+    //MARK:- ItemDetailViewController Delegates
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
         navigationController?.popViewController(animated: true)
     }
