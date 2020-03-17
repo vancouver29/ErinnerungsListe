@@ -31,6 +31,15 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         
         list = Checklist(name: "To Do")
         lists.append(list)
+        
+        for list in lists {
+            let item = ChecklistItem()
+            item.text = "Item for \(list.name)"
+            list.items.append(item)
+        }
+        //print("Data file path is \(dataFilePath())")
+        // Load data
+        loadChecklists()
     }
 
     // MARK: - Table view data source
@@ -53,6 +62,8 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         let checklist = lists[indexPath.row]
         // start a segue
         performSegue(withIdentifier: "ShowChecklist", sender: checklist)
+        
+        saveChecklists()
     }
     
     // Override to support editing the table view.
@@ -61,6 +72,8 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        saveChecklists()
     }
     // Creat the view controller for the Add/Edit Checklist screen
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
@@ -108,15 +121,51 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         navigationController?.popViewController(animated: true)
+        
+        saveChecklists()
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditing checklist: Checklist) {
-        if let index = lists.index(of: checklist) {
+        if let index = lists.firstIndex(of: checklist) {
             let indexPath = IndexPath(row: index, section: 0)
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.textLabel!.text = checklist.name
             }
         }
         navigationController?.popViewController(animated: true)
+        
+        saveChecklists()
     }
+    
+    //MARK:- Data Saving
+        func documentsDirectory () -> URL  {
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            return paths[0]
+        }
+    
+        func dataFilePath() -> URL {
+            return documentsDirectory().appendingPathComponent("Checklists.plist")
+        }
+        // Saving data to file
+        func saveChecklists() {
+            let encoder = PropertyListEncoder()
+            do {
+                let data = try encoder.encode(lists)
+                try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+            } catch {
+                print ("Error encoding item array: \(error.localizedDescription)")
+            }
+        }
+        // Reading data from a file
+        func loadChecklists() {
+            let path = dataFilePath()
+            if let data = try? Data(contentsOf: path) {
+                let decoder = PropertyListDecoder()
+                do {
+                    lists = try decoder.decode([Checklist].self, from: data)
+                } catch {
+                    print("Error decoding item array: \(error.localizedDescription)")
+                }
+            }
+        }
 }
