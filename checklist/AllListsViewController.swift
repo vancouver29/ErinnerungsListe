@@ -60,7 +60,8 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // store the index of the selected row into UserDefaults
-        UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+        //UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+        dataModel.indexOfSelectedChecklist = indexPath.row
         
         let checklist = dataModel.lists[indexPath.row]
         // start a segue
@@ -145,9 +146,10 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // Was the back button tapped?
         if viewController === self {
-            UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+            //UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+            dataModel.indexOfSelectedChecklist = -1
         }
-        print("i am navigation Controller!")
+        //print("i am navigation Controller!")
     }
     // is called when the app starts
     override func viewDidAppear(_ animated: Bool) {
@@ -155,12 +157,13 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         
         navigationController?.delegate = self
         
-        let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        //let index = UserDefaults.standard.integer(forKey: "ShowChecklist")
+        let index = dataModel.indexOfSelectedChecklist
         if index != -1 {
             let checklist = dataModel.lists[index]
             performSegue(withIdentifier: "ShowChecklist", sender: checklist)
         }
-        print("i am viewDidAppear!")
+        //print("i am viewDidAppear!")
     }
     
     
