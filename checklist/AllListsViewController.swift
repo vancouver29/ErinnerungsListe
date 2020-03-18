@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate {
+class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate, UINavigationControllerDelegate {
     
     let cellIdentifier = "ChecklistCell"
     var dataModel: DataModel!
@@ -22,16 +22,16 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         // Add placeholder data
 //        var list = Checklist(name: "Birthdays")
 //        dataModel.lists.append(list)
-//        
+//
 //        list = Checklist(name: "Groceries")
 //        dataModel.lists.append(list)
-//        
+//
 //        list = Checklist(name: "Cool Apps")
 //        dataModel.lists.append(list)
-//        
+//
 //        list = Checklist(name: "To Do")
 //        dataModel.lists.append(list)
-//        
+//
 //        for list in dataModel.lists {
 //            let item = ChecklistItem()
 //            item.text = "Item for \(list.name)"
@@ -59,6 +59,9 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // store the index of the selected row into UserDefaults
+        UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+        
         let checklist = dataModel.lists[indexPath.row]
         // start a segue
         performSegue(withIdentifier: "ShowChecklist", sender: checklist)
@@ -68,6 +71,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         dataModel.lists.remove(at: indexPath.row)
         
         let indexPaths = [indexPath]
@@ -135,6 +139,28 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         navigationController?.popViewController(animated: true)
         
         //saveChecklists()
+    }
+    
+    //MARK:- Navigation Controller Delegates
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        // Was the back button tapped?
+        if viewController === self {
+            UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+        }
+        print("i am navigation Controller!")
+    }
+    // is called when the app starts
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.delegate = self
+        
+        let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        if index != -1 {
+            let checklist = dataModel.lists[index]
+            performSegue(withIdentifier: "ShowChecklist", sender: checklist)
+        }
+        print("i am viewDidAppear!")
     }
     
     
