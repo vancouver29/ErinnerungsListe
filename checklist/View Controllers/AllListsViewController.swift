@@ -51,6 +51,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = makeCell(for: tableView)
         let cell: UITableViewCell!
+        
         if let c = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
             cell = c
         }else {
@@ -63,6 +64,13 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         
         // Access subtitle of label
         cell.detailTextLabel!.text = "\(checklist.countUncheckedItems()) Remaining"
+        
+        let count = checklist.countUncheckedItems()
+        if checklist.items.count == 0 {
+            cell.detailTextLabel!.text = "(No items)"
+        }else {
+            cell.detailTextLabel!.text = count == 0 ? "All done!" : "\(count) Remaining"
+        }
         return cell
     }
     
