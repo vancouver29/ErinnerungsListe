@@ -111,19 +111,12 @@
 		E90634E123F7066A002AB18D /* checklist */ = {
 			isa = PBXGroup;
 			children = (
+				E94DF81424238BEE00BDBA40 /* Resources */,
+				E94DF81324238BB700BDBA40 /* Data Models */,
+				E94DF81224238B8400BDBA40 /* View Controllers */,
 				E90634E223F7066A002AB18D /* AppDelegate.swift */,
-				E90634E423F7066A002AB18D /* SceneDelegate.swift */,
-				E90634E623F7066A002AB18D /* ChecklistViewController.swift */,
-				E90634E823F7066A002AB18D /* Main.storyboard */,
-				E90634EB23F7066F002AB18D /* Assets.xcassets */,
-				E90634ED23F7066F002AB18D /* LaunchScreen.storyboard */,
 				E90634F023F7066F002AB18D /* Info.plist */,
-				E986DA7B2404206000A91375 /* ChecklistItem.swift */,
-				E986DA7D2406DC8400A91375 /* ItemDetailViewController.swift */,
-				E9D933DC241258360084ABF9 /* AllListsViewController.swift */,
-				E9D933DE241270BC0084ABF9 /* Checklist.swift */,
-				E9408DF124152C660057A5BB /* ListDetailViewController.swift */,
-				E94DF81024212BC000BDBA40 /* DataModel.swift */,
+				E90634E423F7066A002AB18D /* SceneDelegate.swift */,
 			);
 			path = checklist;
 			sourceTree = "<group>";
@@ -144,6 +137,37 @@
 				E906350623F70670002AB18D /* Info.plist */,
 			);
 			path = checklistUITests;
+			sourceTree = "<group>";
+		};
+		E94DF81224238B8400BDBA40 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E9408DF124152C660057A5BB /* ListDetailViewController.swift */,
+				E986DA7D2406DC8400A91375 /* ItemDetailViewController.swift */,
+				E90634E623F7066A002AB18D /* ChecklistViewController.swift */,
+				E9D933DC241258360084ABF9 /* AllListsViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E94DF81324238BB700BDBA40 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				E94DF81024212BC000BDBA40 /* DataModel.swift */,
+				E986DA7B2404206000A91375 /* ChecklistItem.swift */,
+				E9D933DE241270BC0084ABF9 /* Checklist.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		E94DF81424238BEE00BDBA40 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E90634E823F7066A002AB18D /* Main.storyboard */,
+				E90634ED23F7066F002AB18D /* LaunchScreen.storyboard */,
+				E90634EB23F7066F002AB18D /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

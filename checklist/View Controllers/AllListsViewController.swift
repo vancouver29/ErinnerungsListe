@@ -18,7 +18,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         navigationController?.navigationBar.prefersLargeTitles = true
         super.viewDidLoad()
         // register identifier for Cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        //tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         // Add placeholder data
 //        var list = Checklist(name: "Birthdays")
 //        dataModel.lists.append(list)
@@ -49,12 +49,20 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = makeCell(for: tableView)
+        //let cell = makeCell(for: tableView)
+        let cell: UITableViewCell!
+        if let c = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
+            cell = c
+        }else {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
+        }
         // Update cell information
         let checklist = dataModel.lists[indexPath.row]
         cell.textLabel!.text = checklist.name
         cell.accessoryType = .detailDisclosureButton
         
+        // Access subtitle of label
+        cell.detailTextLabel!.text = "\(checklist.countUncheckedItems()) Remaining"
         return cell
     }
     
@@ -159,11 +167,16 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         
         //let index = UserDefaults.standard.integer(forKey: "ShowChecklist")
         let index = dataModel.indexOfSelectedChecklist
-        if index != -1 {
+        if index >= 0 && index < dataModel.lists.count {
             let checklist = dataModel.lists[index]
             performSegue(withIdentifier: "ShowChecklist", sender: checklist)
         }
         //print("i am viewDidAppear!")
+    }
+    // update table cells each time a to do list of cell is updated/deleted/created
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     
