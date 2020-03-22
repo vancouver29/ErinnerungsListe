@@ -135,24 +135,28 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAdding checklist: Checklist) {
-        let newRowIndex = dataModel.lists.count
+        //let newRowIndex = dataModel.lists.count
         dataModel.lists.append(checklist)
         
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
-        navigationController?.popViewController(animated: true)
+//        let indexPath = IndexPath(row: newRowIndex, section: 0)
+//        let indexPaths = [indexPath]
+//        tableView.insertRows(at: indexPaths, with: .automatic)
         
+        dataModel.sortChecklists()
+        tableView.reloadData()
+        navigationController?.popViewController(animated: true)
         //saveChecklists()
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditing checklist: Checklist) {
-        if let index = dataModel.lists.firstIndex(of: checklist) {
-            let indexPath = IndexPath(row: index, section: 0)
-            if let cell = tableView.cellForRow(at: indexPath) {
-                cell.textLabel!.text = checklist.name
-            }
-        }
+//        if let index = dataModel.lists.firstIndex(of: checklist) {
+//            let indexPath = IndexPath(row: index, section: 0)
+//            if let cell = tableView.cellForRow(at: indexPath) {
+//                cell.textLabel!.text = checklist.name
+//            }
+//        }
+        dataModel.sortChecklists()
+        tableView.reloadData()
         navigationController?.popViewController(animated: true)
         
         //saveChecklists()
@@ -167,6 +171,13 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         }
         //print("i am navigation Controller!")
     }
+    
+    // update table cells each time a to do list of cell is updated/deleted/created
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     // is called when the app starts
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -181,11 +192,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         }
         //print("i am viewDidAppear!")
     }
-    // update table cells each time a to do list of cell is updated/deleted/created
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
+    
     
     
 }
