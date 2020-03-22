@@ -71,6 +71,8 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         }else {
             cell.detailTextLabel!.text = count == 0 ? "All done!" : "\(count) Remaining"
         }
+        
+        cell.imageView!.image = UIImage(named: checklist.iconName)
         return cell
     }
     
