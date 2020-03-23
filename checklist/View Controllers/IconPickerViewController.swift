@@ -30,5 +30,12 @@ class IConPickerViewController: UITableViewController {
         cell.imageView!.image = UIImage(named: iconName)
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let delegate = delegate {
+            let iconName = icons[indexPath.row]
+            delegate.iconPicker(self, didPick: iconName)
+        }
+    }
 }
 

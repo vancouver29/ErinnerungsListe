@@ -28,7 +28,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="A3V-D0-HOm" kind="show" identifier="ShowChecklist" id="Z3A-VS-SFr"/>
-                        <segue destination="BHW-6L-15X" kind="show" identifier="ShowChecklist" id="ahJ-B2-rp6"/>
+                        <segue destination="BHW-6L-15X" kind="show" identifier="EditChecklist" id="Ktx-hl-xII"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLX-eA-jhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -38,7 +38,7 @@
         <!--Add Checklist-->
         <scene sceneID="Ya7-8W-uh2">
             <objects>
-                <tableViewController id="BHW-6L-15X" customClass="ListDetailViewController" customModule="checklist" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListDetailViewController" id="BHW-6L-15X" customClass="ListDetailViewController" customModule="checklist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="aIR-wy-urj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,6 +332,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="WYc-Xo-gYi"/>
-        <segue reference="ahJ-B2-rp6"/>
+        <segue reference="Ktx-hl-xII"/>
     </inferredMetricsTieBreakers>
 </document>
