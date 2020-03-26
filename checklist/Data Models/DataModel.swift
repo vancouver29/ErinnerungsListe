@@ -84,4 +84,14 @@ class DataModel {
             return list1.name.localizedStandardCompare(list2.name) == .orderedAscending
         })
     }
+    
+    // Due Date
+    class func nextChecklistItemID() -> Int {
+        let userDefaults = UserDefaults.standard
+        let itemID = userDefaults.integer(forKey: "ChecklistItemID")
+        userDefaults.set(itemID + 1 , forKey: "ChecklistItemID")
+        // write these changes to disk immediately
+        userDefaults.synchronize()
+        return itemID
+    }
 }
