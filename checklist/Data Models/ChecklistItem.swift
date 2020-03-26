@@ -16,8 +16,8 @@ class ChecklistItem: NSObject, Codable{
     var itemID = -1
     
     override init() {
-        super.init()
         itemID = DataModel.nextChecklistItemID()
+        super.init()
     }
     
     func toggleChecked() {
