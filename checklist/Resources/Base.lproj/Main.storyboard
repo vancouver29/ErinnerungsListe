@@ -335,9 +335,5 @@
         <segue reference="WYc-Xo-gYi"/>
         <segue reference="Ktx-hl-xII"/>
     </inferredMetricsTieBreakers>
-<<<<<<< HEAD
     <color key="tintColor" red="0.015686274510000001" green="0.66274509800000003" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-=======
-    <color key="tintColor" red="0.015686274509803921" green="0.66274509803921566" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
->>>>>>> 7c0c70194f23fe4bb7bd3d1e1e471bc2ead94146
 </document>
