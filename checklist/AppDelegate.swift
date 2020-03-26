@@ -17,21 +17,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Notification authorization
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) {
+<<<<<<< HEAD
+          granted, error in
+          if granted {
+            print("We have permission")
+          } else {
+            print("Permission denied")
+          }
+=======
             granted, error in
             if granted {
                 print("We have permission")
             } else {
                 print("Permission denied")
             }
+>>>>>>> 7c0c70194f23fe4bb7bd3d1e1e471bc2ead94146
         }
         
         let content = UNMutableNotificationContent()
         content.title = "Hello!"
         content.body = "I am a local notification"
         content.sound = UNNotificationSound.default
+<<<<<<< HEAD
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10,repeats: false)
+        let request = UNNotificationRequest(identifier: "MyNotification",
+                                            content: content,
+                                            trigger: trigger)
+=======
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         let request = UNNotificationRequest(identifier: "MyNotification", content: content, trigger: trigger)
+>>>>>>> 7c0c70194f23fe4bb7bd3d1e1e471bc2ead94146
         center.add(request)
         return true
     }
