@@ -162,5 +162,6 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         tableView.insertRows(at: [indexPathDatePicker], with: .fade)
         // get due date of existed item
         datePicker.setDate(dueDate, animated: false)
+        dueDateLabel.textColor = dueDateLabel.tintColor
     }
 }
