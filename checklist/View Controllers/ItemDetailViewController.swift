@@ -70,6 +70,11 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func dateChanged(_ datePicker: UIDatePicker) {
+        dueDate = datePicker.date
+        updateDueDateLabel()
+    }
+    
     // MARK:- Table View Delegates
     // make the due date row tappable
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -155,5 +160,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         datePickerVisible = true
         let indexPathDatePicker = IndexPath(row: 2, section: 1)
         tableView.insertRows(at: [indexPathDatePicker], with: .fade)
+        // get due date of existed item
+        datePicker.setDate(dueDate, animated: false)
     }
 }
