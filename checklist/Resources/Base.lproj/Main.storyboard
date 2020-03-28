@@ -298,6 +298,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pI2-8t-7Ic">
                                                     <rect key="frame" x="269" y="6" width="51" height="31.5"/>
+                                                    <connections>
+                                                        <action selector="shouldRemindToggled:" destination="lBX-Ci-Mrg" eventType="valueChanged" id="Zc8-WM-ecs"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
