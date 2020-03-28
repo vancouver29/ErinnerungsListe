@@ -21,11 +21,17 @@ class ChecklistItem: NSObject, Codable{
         super.init()
     }
     
+    deinit {
+        removeNotification()
+    }
+    
     func toggleChecked() {
         checked = !checked
     }
     
     func scheduleNotification() {
+        removeNotification()
+        
         if shouldRemind && dueDate > Date() {
             // put items text into the notification message
             let content = UNMutableNotificationContent()
@@ -45,7 +51,13 @@ class ChecklistItem: NSObject, Codable{
             let center = UNUserNotificationCenter.current()
             center.add(request)
             
-            print("Scheduled: \(request) for itemID: \(itemID)")
+            //print("Scheduled: \(request) for itemID: \(itemID)")
         }
+    }
+    
+    // remove the local notification for this ChecklistItem if it exists
+    func removeNotification() {
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: ["\(itemID)"])
     }
 }
