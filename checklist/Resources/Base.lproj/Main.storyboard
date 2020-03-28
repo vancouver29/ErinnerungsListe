@@ -190,27 +190,43 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="Vvf-wL-GK3">
-                                <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vvf-wL-GK3" id="TgO-gi-YPp">
-                                    <rect key="frame" x="0.0" y="0.0" width="261" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="261" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="✔︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eum-bl-jFh">
-                                            <rect key="frame" x="3" y="8" width="19" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✔︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eum-bl-jFh">
+                                            <rect key="frame" x="3" y="8" width="23" height="29"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <color key="textColor" red="0.015686274510000001" green="0.66274509800000003" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DsI-RK-WKz">
-                                            <rect key="frame" x="37" y="11" width="189" height="21"/>
+                                            <rect key="frame" x="31" y="4" width="230" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMJ-hM-3CL">
+                                            <rect key="frame" x="31" y="27" width="229" height="16.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DsI-RK-WKz" firstAttribute="leading" secondItem="eum-bl-jFh" secondAttribute="trailing" constant="5" id="3bs-Mu-nai"/>
+                                        <constraint firstItem="sMJ-hM-3CL" firstAttribute="top" secondItem="DsI-RK-WKz" secondAttribute="bottom" constant="2" id="6Hj-dp-hhg"/>
+                                        <constraint firstItem="sMJ-hM-3CL" firstAttribute="leading" secondItem="eum-bl-jFh" secondAttribute="trailing" constant="5" id="Grg-97-qRn"/>
+                                        <constraint firstAttribute="trailing" secondItem="sMJ-hM-3CL" secondAttribute="trailing" constant="1" id="IQC-WD-bxh"/>
+                                        <constraint firstItem="eum-bl-jFh" firstAttribute="leading" secondItem="TgO-gi-YPp" secondAttribute="leading" constant="3" id="cH1-j5-BlL"/>
+                                        <constraint firstItem="DsI-RK-WKz" firstAttribute="leading" secondItem="eum-bl-jFh" secondAttribute="trailing" constant="5" id="fwO-ke-SJn"/>
+                                        <constraint firstAttribute="bottom" secondItem="sMJ-hM-3CL" secondAttribute="bottom" constant="1" id="llq-Gy-116"/>
+                                        <constraint firstAttribute="bottom" secondItem="eum-bl-jFh" secondAttribute="bottom" constant="7.5" id="mcC-L4-7ud"/>
+                                        <constraint firstItem="eum-bl-jFh" firstAttribute="top" secondItem="TgO-gi-YPp" secondAttribute="top" constant="8" id="osh-qF-oiZ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="lBX-Ci-Mrg" kind="show" identifier="EditItem" trigger="accessoryAction" id="WYc-Xo-gYi"/>

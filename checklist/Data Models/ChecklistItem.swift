@@ -60,4 +60,12 @@ class ChecklistItem: NSObject, Codable{
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: ["\(itemID)"])
     }
+    
+    // get due date of item
+    func displayDueDateItem() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: dueDate)
+    }
 }

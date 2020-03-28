@@ -10,13 +10,6 @@ import UIKit
 
 class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
     var checklist: Checklist!
-    
-    var row0checked = false
-    var row1checked = false
-    var row2checked = false
-    var row3checked = false
-    var row4checked = false
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +33,13 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
             let item = checklist.items[indexPath.row]
-//            let label = cell.viewWithTag(1000) as! UILabel
-//            label.text = item.text
+            // get text of item
             configureText(for: cell, with: item)
-
+            // get due date of item
+            configureDueDateItem(for: cell, with: item)
+            // get checkmark of item
             configureCheckmark(for: cell, with: item)
+            
             return cell
     }
     
@@ -59,6 +54,11 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
        // label.text = "\(item.itemID): \(item.text)"
+    }
+    
+    func configureDueDateItem( for cell: UITableViewCell, with item: ChecklistItem) {
+        let label = cell.viewWithTag(1002) as! UILabel
+        label.text = item.displayDueDateItem()
     }
     //MARK:- Table View Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
