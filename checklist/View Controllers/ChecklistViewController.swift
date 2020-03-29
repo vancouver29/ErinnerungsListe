@@ -97,6 +97,11 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         let indexPath = IndexPath(row: newRowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
+        
+        // sort ChecklistItem by dueDate
+        checklist.sortChecklistItems()
+        tableView.reloadData()
+        
         navigationController?.popViewController(animated: true)
         
         //saveChecklistItems()
@@ -107,10 +112,12 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
             let indexPath = IndexPath(row: index, section: 0)
             if let cell = tableView.cellForRow(at: indexPath) {
                 configureText(for: cell, with: item)
+                // sort ChecklistItem by dueDate
+                checklist.sortChecklistItems()
+                tableView.reloadData()
             }
         }
         navigationController?.popViewController(animated: true)
-        
         //saveChecklistItems()
     }
     

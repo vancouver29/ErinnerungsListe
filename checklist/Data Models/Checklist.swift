@@ -28,4 +28,14 @@ class Checklist: NSObject, Codable {
 //        return count
         return items.reduce(0) {cnt, item in cnt + (item.checked ? 0 : 1)}
     }
+    
+    // sort item by due dates
+    func sortChecklistItems() {
+        return items.sort(by: { item1, item2 in
+            return item1.dueDate.compare(item2.dueDate) == .orderedAscending
+        })
+//        return items.sort {
+//            $0.dueDate < $1.dueDate
+//        }
+    }
 }
