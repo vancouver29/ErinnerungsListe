@@ -7,6 +7,71 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Help-->
+        <scene sceneID="mH0-r1-zvt">
+            <objects>
+                <tableViewController id="arm-Z7-SQk" customClass="HelpsViewController" customModule="checklist" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AO3-Op-o0u">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <textView key="tableFooterView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" id="iTV-Br-q5q">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="476"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <mutableString key="content">★ ToDo-Lists ★  How to use ToDo-Lists? 
+ 
+ 1. On the main screen, you can create a new ToDo-List. ( Click on the + Button ).
+ 
+ 2. If there are ToDo-Lists already on the main screen, you can anytime edit it's title ( click on info symbol) or create or edit ToDo-items within that list by clicking on the list's title.
+ 
+ 3. Each ToDo-Item can be reminded if "Remind Me" is set by selecting the desired due date.
+ 
+ 4. If a ToDo-item is done, you can click on that ToDo-item to toggle the checkmark.
+ 
+ 5. ToDo-Items are sorted by due dates.      Version: 1.0.0  </mutableString>
+                                    <attributes>
+                                        <color key="NSColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <font key="NSFont" metaFont="menu" size="14"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="©">
+                                    <attributes>
+                                        <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="NSColor" red="0.13333" green="0.13333" blue="0.13333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="14" name="Helvetica"/>
+                                        <real key="NSKern" value="0.0"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        <color key="NSStrokeColor" red="0.13333" green="0.13333" blue="0.13333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content=" 2020 VancouverDE">
+                                    <attributes>
+                                        <color key="NSColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <font key="NSFont" metaFont="menu" size="14"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="arm-Z7-SQk" id="zX2-ze-ygH"/>
+                            <outlet property="delegate" destination="arm-Z7-SQk" id="wRS-Ce-lan"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Help" largeTitleDisplayMode="never" id="PqZ-L1-Fiv"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wlx-0l-fOl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1029.375" y="-743.66197183098598"/>
+        </scene>
         <!--All Lists-->
         <scene sceneID="S3O-Ou-6ku">
             <objects>
@@ -21,6 +86,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDo-Lists" id="fhk-Yj-6rV">
+                        <barButtonItem key="leftBarButtonItem" title="Help" id="bwZ-58-SWk">
+                            <connections>
+                                <segue destination="arm-Z7-SQk" kind="show" id="qxf-Cn-SHL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="34B-ou-rJh">
                             <connections>
                                 <segue destination="BHW-6L-15X" kind="show" identifier="AddChecklist" id="TUh-oI-FIE"/>
